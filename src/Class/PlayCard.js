@@ -2,7 +2,7 @@ let lastPlayCardId = 0
 
 const numberedCards = ['2', '3', '4', '5', '6', '7', '8', '9', '10'];
 const faceCards = ['Jack', 'Queen', 'King'];
-const cardRanks = [...numberedCards, ...faceCards, 'ace'] //spreat operator to copy all element in array
+const cardRanks = [...numberedCards, ...faceCards, 'Ace'] //spreat operator to copy all element in array
 
 class PlayCard {
     constructor(name, suit) {
