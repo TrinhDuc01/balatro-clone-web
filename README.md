@@ -1,3 +1,8 @@
+Thanks Local Thunk, who make a great game.
+
+This game is clone of Balatro. It's non-commercial in nature.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
