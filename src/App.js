@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+
+import handRanking from './Class/HandRankingOption';
+import PlayCard from './Class/PlayCard';
 
 function App() {
+
+  console.log(handRanking([
+    new PlayCard('2', 'spread'),
+    new PlayCard('5', 'spread'),
+    new PlayCard('3', 'spread'),
+    new PlayCard('4', 'spread'),
+    new PlayCard('Ace', 'spread'),
+  ]))
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
     </div>
   );
 }
