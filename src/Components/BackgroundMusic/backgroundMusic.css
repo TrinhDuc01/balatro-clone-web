@@ -1,0 +1,13 @@
+.background-music {
+    position: absolute;
+    bottom: 0;
+    left: 4px;
+    z-index: 999;
+}
+
+.background-music > button {
+    background-color: unset;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    border: none;
+}
