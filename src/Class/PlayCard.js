@@ -5,11 +5,12 @@ const faceCards = ['Jack', 'Queen', 'King'];
 const cardRanks = [...numberedCards, ...faceCards, 'Ace'] //spreat operator to copy all element in array
 
 class PlayCard {
-    constructor(name, suit) {
+    constructor(name, suit, position) {
         lastPlayCardId++
         this.id = lastPlayCardId;
         this.name = name
         this.suit = suit
+        this.position = position // vị trí của lá bài trên asset
     }
 
     isFace() {
