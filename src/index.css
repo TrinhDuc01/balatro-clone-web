@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@font-face {
+    font-family: 'Balatro';
+    src: url('./fonts/balatro.otf.woff2/balatro.otf.woff2') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Press Start 2P', monospace;
-    letter-spacing: -1px;
+    font-family: 'Balatro', monospace;
+    letter-spacing: 1.5px;
 }
 
 /* Nguồn https://pixelcorners.lukeb.co.uk/?radius=8&multiplier=4 */
