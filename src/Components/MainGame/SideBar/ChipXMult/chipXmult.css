@@ -1,0 +1,44 @@
+.chip-x-mult{
+    height: 140px;
+    background-color: #172325;
+    color: white;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.calculate-score{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 30px
+}
+.calculate-score .lv-hand{
+    font-size: 20px;
+}
+
+.chip-x-mult-detail{
+    display: flex;
+    font-size: 45px;
+    gap: 4px;
+}
+
+.chip-x-mult-detail div:nth-child(1){
+    text-align: right;
+    flex-grow: 2;
+    background-color: #0093ff;
+    padding-right: 6px;
+}
+.chip-x-mult-detail div:nth-child(2){
+    color: #ff4c40;
+    padding-left: 2px;
+}
+
+.chip-x-mult-detail div:nth-child(3){
+    flex-grow: 2;
+    background-color: #ff4c40;
+    padding-left: 8px;
+}
