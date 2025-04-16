@@ -21,11 +21,11 @@ function App() {
     <div className="App" style={{ backgroundColor: "black", width: '100vw', height: '100vh' }}>
 
 
-      {/* <Card margin={0}/>
-      <Card margin={50}/>
-      <Card margin={100}/> */}
-        <Combine/>
-      <BackgroundHomeCanvas/>
+      <Card margin={0} />
+      {/* <Card margin={50} />
+      <Card margin={100} /> */}
+      <Combine />
+      <BackgroundHomeCanvas />
       <ButtonToggleMusic />
     </div>
   );
