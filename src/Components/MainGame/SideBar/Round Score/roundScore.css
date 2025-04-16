@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.title{
+    font-size: 30px;
+}
+
 .score {
     background-color: #2e3a3c;
     flex-grow: 2;
@@ -29,5 +33,5 @@
 }
 
 .score .score-chip {
-    font-size: 34px;
+    font-size: 45px;
 }
