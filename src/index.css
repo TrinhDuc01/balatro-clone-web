@@ -11,6 +11,9 @@
     box-sizing: border-box;
     font-family: 'm6x11plus', monospace;
     letter-spacing: 0.5px;
+    cursor: default;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 /* Nguồn https://pixelcorners.lukeb.co.uk/?radius=8&multiplier=4 */

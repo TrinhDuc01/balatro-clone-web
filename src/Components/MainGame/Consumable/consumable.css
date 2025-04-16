@@ -1,0 +1,17 @@
+.consumable {
+    flex-basis: calc(2/7*100%);
+}
+
+.consumable-container {
+    height: 90%;
+    background-color: black;
+    opacity: 0.2;
+}
+
+
+.consumable>.quantity-consumable {
+    color: white;
+    letter-spacing: 1.5px;
+    font-size: 20px;
+    padding-left: 15px;
+}
