@@ -1,11 +1,9 @@
-.card{
-    background: url('/public/assets/basic-card.png') -142px 0;
+.card {
     border-radius: 10px;
     width: 142px;
     height: 190px;
     border: 1px solid rgb(83, 83, 83);
-    background-color: white;
     position: absolute;
-    transition: 0.2s;
+    transition: 0s;
     z-index: 100;
 }

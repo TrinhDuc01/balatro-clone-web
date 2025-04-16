@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./card.css"
 
-const Card = ({ margin }) => {
+const Card = ({ left, position }) => {
     const [transformStyle, setTransformStyle] = useState('rotateX(0deg) rotateY(0deg)');
 
     const handleMouseMove = (e) => {
@@ -12,15 +12,25 @@ const Card = ({ margin }) => {
         const centerX = card.width / 2;
         const centerY = card.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * 30; // độ nghiêng trục X
-        const rotateY = ((x - centerX) / centerX) * 30; // độ nghiêng trục Y
+        const rotateX = ((y - centerY) / centerY) * 20; // độ nghiêng trục X
+        const rotateY = ((x - centerX) / centerX) * 20; // độ nghiêng trục Y
 
         setTransformStyle(`perspective(400px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`);
     }
+
+    const style = {
+        transform: transformStyle,
+        left: left,
+        backgroundImage: `url('/assets/basic-card.png')`,
+        backgroundPosition: `${position.width}px ${position.height}px`,
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: 'white'
+    }
     return <div
-        onMouseLeave={(e)=> setTransformStyle()}
+        onMouseLeave={(e) => setTransformStyle()}
         onMouseMove={(e) => handleMouseMove(e)}
-        style={{ transform: transformStyle,left:margin }} className="card ">
+        style={style} className="card ">
+        
 
     </div>
 }
