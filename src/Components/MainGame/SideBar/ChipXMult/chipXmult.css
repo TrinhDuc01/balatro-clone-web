@@ -31,6 +31,7 @@
     flex-grow: 2;
     background-color: #0093ff;
     padding-right: 6px;
+    text-shadow: 3px 3px rgb(54, 54, 54);
 }
 .chip-x-mult-detail div:nth-child(2){
     color: #ff4c40;
@@ -41,4 +42,5 @@
     flex-grow: 2;
     background-color: #ff4c40;
     padding-left: 8px;
+    text-shadow: 3px 3px rgb(54, 54, 54);
 }
