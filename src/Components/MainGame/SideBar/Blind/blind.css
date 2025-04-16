@@ -1,6 +1,6 @@
 .blind {
     width: 100%;
-    height: 35%;
+    height: 30%;
     background-color: #1e2b2d;
     padding: 3px;
     display: flex;
@@ -9,8 +9,8 @@
 }
 
 .blind-name {
-    height: 50px;
-    line-height: 50px;
+    height: 60px;
+    line-height: 60px;
     text-align: center;
     background-color: #0068ad;
     color: white;
@@ -20,7 +20,7 @@
 }
 
 .blind-name span {
-    font-size: 30px;
+    font-size: 50px;
 }
 
 .info-blind {
