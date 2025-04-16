@@ -16,7 +16,7 @@
     user-select: none;
 }
 
-/* Nguồn https://pixelcorners.lukeb.co.uk/?radius=8&multiplier=4 */
+/* làm border-radius dạng pixel Nguồn https://pixelcorners.lukeb.co.uk/?radius=8&multiplier=4 */
 .pixel-corners {
     clip-path: polygon(0px calc(100% - 10px),
             2px calc(100% - 10px),
