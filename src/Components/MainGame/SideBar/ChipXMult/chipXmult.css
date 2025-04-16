@@ -1,5 +1,5 @@
 .chip-x-mult{
-    height: 140px;
+    height: 22%;
     background-color: #172325;
     color: white;
     padding: 12px;
@@ -14,15 +14,15 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    font-size: 30px
+    font-size: 40px
 }
 .calculate-score .lv-hand{
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .chip-x-mult-detail{
     display: flex;
-    font-size: 45px;
+    font-size: 60px;
     gap: 4px;
 }
 
