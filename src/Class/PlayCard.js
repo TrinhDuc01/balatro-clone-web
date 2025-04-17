@@ -5,29 +5,29 @@ const faceCards = ['Jack', 'Queen', 'King'];
 const cardRanks = [...numberedCards, ...faceCards, 'Ace'] //spreat operator to copy all element in array
 
 class PlayCard {
-    constructor(name, suit, position) {
+    constructor(rank, suit, position) {
         lastPlayCardId++
         this.id = lastPlayCardId;
-        this.name = name
+        this.rank = rank
         this.suit = suit
         this.position = position // vị trí của lá bài trên asset
     }
 
     isFace() {
-        return faceCards.includes(this.name)
+        return faceCards.includes(this.rank)
     }
 
     isNumbered() {
-        return numberedCards.includes(this.name)
+        return numberedCards.includes(this.rank)
     }
 
     getRank() {
-        return cardRanks.indexOf(this.name)
+        return cardRanks.indexOf(this.rank)
     }
 
     points() {
         if (this.isNumbered()) {
-            return Number(this.name)
+            return Number(this.rank)
         }
         return 10
     }
