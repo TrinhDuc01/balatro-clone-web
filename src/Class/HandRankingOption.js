@@ -200,7 +200,7 @@ const handRanking = (hand) => {
 
 }
 
-export default {
+export {
     handRankingOption,
     handRanking
 }
