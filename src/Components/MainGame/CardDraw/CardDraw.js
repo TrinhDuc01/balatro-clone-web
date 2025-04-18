@@ -33,10 +33,10 @@ const CardDraw = () => {
             const numCards = drawCard.length //số lượng lá bài
             const angle = (index / (numCards - 1) - 0.5) * maxAngle;//tính góc cho mỗi lá
             return <Card
+                infoCard={ele}
                 handleDragStart={handleDragStart}
                 handleDrop={handleDrop}
                 index={index} key={index} position={ele.position} scale={0.77} rotateZ={angle}>
-
             </Card>
         })}
         <div className="card-draw-container pixel-corners">
