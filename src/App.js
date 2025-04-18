@@ -1,51 +1,42 @@
 
-import { useEffect } from 'react';
-import handRanking from './Class/HandRankingOption';
-import PlayCard from './Class/PlayCard';
+import { useEffect, useState } from 'react';
+
 import BackgroundHomeCanvas from './Components/BackgroundHome/BackgroundHomeCanvas';
 import ButtonToggleMusic from './Components/BackgroundMusic/ButtonToggleMusic';
-import Card from './Components/Card/Card';
+
 import Deck from './Components/Deck/Deck';
 import Combine from './Components/MainGame/Combine/Combine';
 import { useDispatch, useSelector } from 'react-redux';
-import DrawCardReducer from './Redux/reducers/DrawCardReducer';
+import { handRanking } from './Class/HandRankingOption';
+
 
 function App() {
-
-  // console.log(handRanking([
-  //   new PlayCard('Ace', 'spread'),
-  //   new PlayCard('5', 'Club'),
-  //   new PlayCard('3', 'spread'),
-  //   new PlayCard('4', 'spread'),
-  //   new PlayCard('Ace', 'spread'),
-  // ]))
-  // console.log(Deck())
+  console.log(handRanking([
+    
+  ]))
+  const [start,setStart] = useState(0)
+  const remainingCards = useSelector((state) => state.DrawCardReducer.remainingCards)
+  console.log(remainingCards)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch({ type: 'InitDeckRoot', payload: Deck() })
-  }, [])
-
-  const remainingCards = useSelector((state) => {
-    return state.DrawCardReducer.remainingCards
-  })
-
-
-  const handleDrawCard = () => {
     dispatch({
       type: "Draw",
       deck: remainingCards,
       num: 8,
-
     })
-  }
+
+    //Trick lỏd
+    if(start===0){
+      setTimeout(()=>{
+        setStart(1);
+      },100)
+    }
+  }, [start])
 
 
   return (
     <div className="App" style={{ backgroundColor: "black", width: '100vw', height: '100vh' }}>
-      
-      <div onClick={handleDrawCard} style={{ position: 'absolute', zIndex: 10000, backgroundColor: 'red' }}>
-        Rut bai
-      </div>
       <Combine />
       <BackgroundHomeCanvas />
       <ButtonToggleMusic />
