@@ -1,0 +1,62 @@
+.play-sort-discard {
+    flex-basis: 15%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.play-sort-discard>div {
+    flex-basis: 18%;
+    height: 70px;
+    ;
+}
+
+.play-hand {
+    background-color: #0093ff;
+    font-size: 26px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+}
+
+
+.sort-hand {
+    display: flex;
+    box-shadow:   -6px 0 1px 0 white,
+                 6px 0 0 0 white,
+                 0 -6px 0 0 white,
+                 0 6px 0 0 white;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.sort-hand p {
+    color: white;
+    font-size: 20px;
+}
+
+.rank-suit {
+    display: flex;
+    gap: 8px;
+}
+
+.rank-suit>.rank,
+.suit {
+    background-color: #ff9800;
+    color: white;
+    font-size: 20px;
+    padding: 10px 15px;
+}
+
+
+.discard {
+    background-color: #ff4c40;
+    font-size: 26px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+}
