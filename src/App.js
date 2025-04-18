@@ -25,11 +25,6 @@ function App() {
     dispatch({ type: 'InitDeckRoot', payload: Deck() })
   }, [])
 
-  const drawCard = useSelector((state) => {
-    console.log(state.DrawCardReducer)
-    return state.DrawCardReducer.drawCard
-  })
-
   const remainingCards = useSelector((state) => {
     return state.DrawCardReducer.remainingCards
   })
@@ -47,11 +42,7 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundColor: "black", width: '100vw', height: '100vh' }}>
-      {drawCard&&drawCard.map((ele,index)=>{
-        return <Card key={index} left={index*40} position={ele.position}>
-
-        </Card>
-      })}
+      
       <div onClick={handleDrawCard} style={{ position: 'absolute', zIndex: 10000, backgroundColor: 'red' }}>
         Rut bai
       </div>
