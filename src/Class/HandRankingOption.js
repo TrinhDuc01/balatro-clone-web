@@ -1,5 +1,21 @@
 let HandMax = 5
 // các loại Hand trong balatro
+
+const nohand = {
+    level: '0',
+    nameHand: "",
+    levelupvalue: {
+        chip: 15,
+        mult: 1,
+    },
+    get mult() {// update điểm chip theo cấp của hand
+        return 0
+    },
+    get chip() {
+        return 0
+    },
+    timesPlayed: 0
+}
 const handRankingOption = {
     'Pair': {
         level: 1,
@@ -170,6 +186,7 @@ const handRankingOption = {
 
 //phân loại hand bài người chơi đánh
 const handRanking = (hand) => {
+    if (hand.length === 0) return nohand
     const suits = hand.map(card => card.suit) // tách suit thành 1 mảng
     const names = hand.map(card => card.getRank()).sort((a, b) => a - b) // tách name thành 1 mảng
 
@@ -187,14 +204,14 @@ const handRanking = (hand) => {
     // console.log(isStraight)
     if (isFlush && isStraight && Math.max(...names) === 12) return handRankingOption['Royal Flush'];
     if (isFlush && isStraight) return handRankingOption['Straight Flush'];
-    if (countValues === '41') return handRankingOption['Four of a Kind'];
-    if (countValues === '32') return handRankingOption['Full House'];
+    if (countValues.includes('4')) return handRankingOption['Four of a Kind'];
+    if (countValues.includes('32')) return handRankingOption['Full House'];
     if (isFlush) return handRankingOption['Flush'];
     if (isStraight) return handRankingOption['Straight'];
-    if (countValues === '311') return handRankingOption['Three of a Kind'];
-    if (countValues === '221') return handRankingOption['Two Pair'];
-    if (countValues === '2111') return handRankingOption['Pair'];
-    if (countValues === '5') return handRankingOption['Five of a Kind']
+    if (countValues.includes('3')) return handRankingOption['Three of a Kind'];
+    if (countValues.includes('22')) return handRankingOption['Two Pair'];
+    if (countValues.includes('2')) return handRankingOption['Pair'];
+    if (countValues.includes('5')) return handRankingOption['Five of a Kind']
     return handRankingOption['High Card'];
 
 
@@ -202,5 +219,6 @@ const handRanking = (hand) => {
 
 export {
     handRankingOption,
-    handRanking
+    handRanking,
+    nohand
 }
