@@ -28,6 +28,12 @@ const DrawCardReducer = (state = defaultState, action) => {
                 drawCard: drawnCards
             }
         }
+        case "ChangIndex": {
+            return {
+                remainingCards: state.shuffledDeck,
+                drawCard: action.payload
+            }
+        }
 
         default:
             return state
