@@ -31,7 +31,7 @@
     transform: rotateY(180deg);
 }
 
-.card:hover .card-inner {
+/* .card:hover .card-inner {
     transform: rotateY(180deg);
 
-}
+} */
