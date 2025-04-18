@@ -1,4 +1,8 @@
+import ButtonFunction from "../ButtonFunction/ButtonFunction"
+import CardDraw from "../CardDraw/CardDraw"
+import CardPlayed from "../CardPlayed/CardPlayed"
 import Consumable from "../Consumable/Consumable"
+import Deck from "../Deck/Deck"
 import Joker from "../Joker/Joker"
 import Blind from "../SideBar/Blind/Blind"
 import ChipXMult from "../SideBar/ChipXMult/ChipXMult"
@@ -23,24 +27,12 @@ const Combine = () => {
                     <Consumable />
                 </div>
                 <div className="card-deck">
-                    <div className="played-card">
-
-                    </div>
                     <div className="container-card">
-                            <div className="card-draw">
-
-                            </div>
-                            <div className="quantity">
-                                8/8
-                            </div>
-                            <div>
-                                <div className="play-sort-discard">
-
-                                </div>
-
-                            </div>
-                            <div className="deck"></div>
-                        </div>
+                        <CardPlayed />
+                        <CardDraw />
+                        <ButtonFunction />
+                    </div>
+                    <Deck />
                 </div>
             </div>
 
