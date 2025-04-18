@@ -25,6 +25,13 @@ class PlayCard {
         return cardRanks.indexOf(this.rank)
     }
 
+    getSuit() {
+        if (this.suit === "Diamond") return 3
+        if (this.suit === "Heart") return 2
+        if (this.suit === "Spread") return 1
+        if (this.suit === "Club") return 0
+    }
+
     points() {
         if (this.isNumbered()) {
             return Number(this.rank)
