@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./card.css"
 
-const Card = ({ left, position }) => {
+const Card = ({ left, position, scale=1 }) => {
     const [transformStyle, setTransformStyle] = useState('rotateX(0deg) rotateY(0deg)');
 
     const handleMouseMove = (e) => {
@@ -21,8 +21,11 @@ const Card = ({ left, position }) => {
     const style = {
         transform: transformStyle,
         left: left,
+        width: 142*scale,
+        height: 190*scale,
         backgroundImage: `url('/assets/basic-card.png')`,
-        backgroundPosition: `${position.width}px ${position.height}px`,
+        backgroundSize: 1846 * scale,
+        backgroundPosition: `${position.width * scale}px ${position.height * scale}px`,
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'white'
     }
@@ -30,7 +33,7 @@ const Card = ({ left, position }) => {
         onMouseLeave={(e) => setTransformStyle()}
         onMouseMove={(e) => handleMouseMove(e)}
         style={style} className="card ">
-        
+
 
     </div>
 }
