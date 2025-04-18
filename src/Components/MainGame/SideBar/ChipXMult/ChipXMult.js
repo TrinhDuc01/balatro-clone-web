@@ -1,20 +1,24 @@
+import { useSelector } from 'react-redux';
 import './chipXmult.css'
 
 const ChipXMult = () => {
+
+    const PokerHand = useSelector(state => state.PokerHandReducer.PokerHandPlay)
+    console.log(PokerHand)
     return <div className="chip-x-mult pixel-corners">
         <div className="calculate-score">
-            High card
-            <div className='lv-hand'>Lv.1</div>
+            {PokerHand.nameHand}
+            <div className='lv-hand'>Lv.{PokerHand.level}</div>
         </div>
         <div className='chip-x-mult-detail'>
             <div className='pixel-corners'>
-                0
+                {PokerHand.chip}
             </div>
             <div>
                 X
             </div>
             <div className='pixel-corners'>
-                0
+                {PokerHand.mult}
             </div>
         </div>
     </div>
