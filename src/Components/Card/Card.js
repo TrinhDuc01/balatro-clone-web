@@ -15,7 +15,7 @@ const Card = ({ left, position, scale=1 }) => {
         const rotateX = ((y - centerY) / centerY) * 20; // độ nghiêng trục X
         const rotateY = ((x - centerX) / centerX) * 20; // độ nghiêng trục Y
 
-        setTransformStyle(`perspective(400px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`);
+        setTransformStyle(`perspective(400px) scale(1.2,1.2) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`);
     }
 
     const style = {
@@ -27,7 +27,8 @@ const Card = ({ left, position, scale=1 }) => {
         backgroundSize: 1846 * scale,
         backgroundPosition: `${position.width * scale}px ${position.height * scale}px`,
         backgroundRepeat: 'no-repeat',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        zIndex: 9900,
     }
     return <div
         onMouseLeave={(e) => setTransformStyle()}
