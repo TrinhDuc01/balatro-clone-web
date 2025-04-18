@@ -1,0 +1,10 @@
+.deck{
+    flex-basis: 10%;
+    background-image: url(/public/assets/deck/Balatro-red_deck.webp);
+    background-size: 110px;
+    background-repeat: no-repeat;
+    height: 148px;
+
+    align-self: flex-end;
+    margin: 0 0 2em 0;
+}
