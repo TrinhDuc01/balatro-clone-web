@@ -14,6 +14,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 10
         },
+        timesPlayed: 0
     },
     'Two Pair': {
         level: 1,
@@ -28,6 +29,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 20
         },
+        timesPlayed: 0
     },
     'Three of a Kind': {
         level: 1,
@@ -42,6 +44,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 30
         },
+        timesPlayed: 0
     },
     'Straight': {
         level: 1,
@@ -56,6 +59,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 30
         },
+        timesPlayed: 0
     },
     'Flush': {
         level: 1,
@@ -70,6 +74,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 35
         },
+        timesPlayed: 0
     },
     'Full House': {
         level: 1,
@@ -84,6 +89,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 40
         },
+        timesPlayed: 0
     },
     'Four of a Kind': {
         level: 1,
@@ -98,6 +104,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 60
         },
+        timesPlayed: 0
     },
     'Five of a Kind': {
         level: 1,
@@ -112,6 +119,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 12
         },
+        timesPlayed: 0
     },
     'High Card': {
         level: 1,
@@ -126,6 +134,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 5
         },
+        timesPlayed: 0
     },
     'Straight Flush': {
         level: 1,
@@ -140,6 +149,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 100
         },
+        timesPlayed: 0
     },
     'Royal Flush': {
         level: 1,
@@ -154,6 +164,7 @@ const handRankingOption = {
         get chip() {
             return (this.level - 1) * this.levelupvalue.chip + 100
         },
+        timesPlayed: 0
     }
 }
 
@@ -189,4 +200,7 @@ const handRanking = (hand) => {
 
 }
 
-export default handRanking
+export default {
+    handRankingOption,
+    handRanking
+}
