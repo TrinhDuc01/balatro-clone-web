@@ -5,10 +5,16 @@ const defaultState = [
 const PlayedCardReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "AddCard": {
-            return [...state, action.payload]
+            if (state.length < 5) {
+                return [...state, action.payload]
+            }
+            return state;
         }
         case "RemoveCard": {
             return state.filter(card => card.id !== action.payload.id)
+        }
+        case "DiscardChooseCard": {
+            return []
         }
 
         default:
