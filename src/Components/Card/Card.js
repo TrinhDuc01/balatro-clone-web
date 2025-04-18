@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./card.css"
 
-const Card = ({ left, position, scale=1 }) => {
+const Card = ({ index, position, scale = 1, rotateZ = 0, handleDragStart, handleDrop }) => {
     const [transformStyle, setTransformStyle] = useState('rotateX(0deg) rotateY(0deg)');
 
     const handleMouseMove = (e) => {
@@ -19,10 +19,11 @@ const Card = ({ left, position, scale=1 }) => {
     }
 
     const style = {
-        transform: transformStyle,
-        left: left,
-        width: 142*scale,
-        height: 190*scale,
+        transform: `  translateX(${rotateZ * 80}px)` + transformStyle + `rotateZ(${rotateZ}deg)`,
+        left: `calc(50% - ${142 * scale / 2}px)`,//can giua vao vung drawcard cho la bai rut 
+        top: `calc(50% - ${190 / 0.9 * scale / 2}px)`,//can giua vao vung drawcard cho la bai rut *0.9 vì phần cardDraw-container làm nền chiếm 90%
+        width: 142 * scale,
+        height: 190 * scale,
         backgroundImage: `url('/assets/basic-card.png')`,
         backgroundSize: 1846 * scale,
         backgroundPosition: `${position.width * scale}px ${position.height * scale}px`,
@@ -31,7 +32,11 @@ const Card = ({ left, position, scale=1 }) => {
         zIndex: 9900,
     }
     return <div
-        onMouseLeave={(e) => setTransformStyle()}
+        draggable
+        onDragStart={() => handleDragStart(index)}
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={() => handleDrop(index)}
+        onMouseLeave={(e) => setTransformStyle('rotateX(0deg) rotateY(0deg)')}
         onMouseMove={(e) => handleMouseMove(e)}
         style={style} className="card ">
 
