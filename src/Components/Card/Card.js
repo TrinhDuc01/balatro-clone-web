@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./card.css"
 import { useDispatch, useSelector } from "react-redux";
 
-const Card = ({ infoCard, index, position, scale = 1, rotateZ = 0, handleDragStart, handleDrop }) => {
+const Card = ({ infoCard, choosing, index, position, scale = 1, rotateZ = 0, handleDragStart, handleDrop }) => {
     const [transformStyle, setTransformStyle] = useState('rotateX(0deg) rotateY(0deg)');
     const [chooseCard, setChooseCard] = useState(false)
-    const [countCardPlayed, setCountCardPlayed] = useState(0)
     const dispatch = useDispatch();
     const handleMouseMove = (e) => {
         const card = e.target.getBoundingClientRect();
@@ -20,32 +19,37 @@ const Card = ({ infoCard, index, position, scale = 1, rotateZ = 0, handleDragSta
 
         setTransformStyle(`perspective(400px) scale(1.2,1.2) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`);
     }
+    useEffect(() => {
 
-    const PlayedCard = useSelector(state => state.PlayedCardReducer)
-    console.log(PlayedCard)
+    }, [chooseCard])
+    const choosingCards = useSelector((state) => state.PlayedCardReducer); //danh sach card đang chọn
+
     const handleChoose = () => {
-        if (!chooseCard === true && PlayedCard.length < 5) {
-            setChooseCard(!chooseCard); // khi card được chọn thì nó sẽ nhích lên 20px
-            dispatch({
-                type: "AddCard",
-                payload: infoCard
-            })
-            setCountCardPlayed(countCardPlayed + 1)
+        let nextChoosingCards = [...choosingCards]; // cập nhật tức thì
+        const isSelected = chooseCard;
+    
+        if (!isSelected && choosingCards.length < 5) {
+            setChooseCard(true);
+            nextChoosingCards.push(infoCard);
+            dispatch({ type: 'AddCard', payload: infoCard });
+        } else if (isSelected) {
+            setChooseCard(false);
+            nextChoosingCards = nextChoosingCards.filter(card => card.id !== infoCard.id);
+            dispatch({ type: 'RemoveCard', payload: infoCard });
         }
-        if (!chooseCard === false) {
-            setChooseCard(!chooseCard); // khi card được chọn thì nó sẽ nhích lên 25px
-            dispatch({
-                type: "RemoveCard",
-                payload: infoCard
-            })
-            setCountCardPlayed(countCardPlayed - 1)
-        }
+    
+        dispatch({
+            type: "CheckHand",
+            payload: nextChoosingCards
+        });
     }
+    
+    
 
     const styleCard = {
         transform: `  translateX(${rotateZ * 80}px)` + transformStyle + `rotateZ(${rotateZ}deg)`,
         left: `calc(50% - ${142 * scale / 2}px)`,//can giua vao vung drawcard cho la bai rut 
-        top: `calc(50% - ${190 / 0.9 * scale / 2}px - ${!chooseCard ? 0 : chooseCard ? 30 : -30}px)`,//can giua vao vung drawcard cho la bai rut *0.9 vì phần cardDraw-container làm nền chiếm 90% đoạn sau là tạo hiệu ứng chọn lá bài
+        top: `calc(50% - ${190 / 0.9 * scale / 2}px - ${choosing}px)`,//can giua vao vung drawcard cho la bai rut *0.9 vì phần cardDraw-container làm nền chiếm 90% đoạn sau là tạo hiệu ứng chọn lá bài
         width: 142 * scale,
         height: 190 * scale,
 
@@ -60,8 +64,8 @@ const Card = ({ infoCard, index, position, scale = 1, rotateZ = 0, handleDragSta
         backgroundColor: 'white',
     }
     const styleBackCard = {
-        backgroundImage:`url('/assets/deck/Balatro-red_deck.webp')`,
-        backgroundSize:140*scale,
+        backgroundImage: `url('/assets/deck/Balatro-red_deck.webp')`,
+        backgroundSize: 140 * scale,
         backgroundRepeat: 'no-repeat',
     }
     return <div
@@ -75,10 +79,10 @@ const Card = ({ infoCard, index, position, scale = 1, rotateZ = 0, handleDragSta
         style={styleCard} className="card ">
         <div className="card-inner">
             <div className="card-front" style={styleFaceCard}>
-                
+
             </div>
             <div className="card-back" style={styleBackCard}>
-            
+
             </div>
         </div>
 
