@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux"
 import "./infoRound.css"
 
 const InfoRound = () => {
+    const { hands, discards } = useSelector(state => state.HandsDiscardsReducer)
     return (
         <div className="info-round">
             <div className="run-info-options">
@@ -16,11 +18,11 @@ const InfoRound = () => {
                 <div className="hands-discards">
                     <div className="hands pixel-corners">
                         <p>Hands</p>
-                        <div className="pixel-corners">4</div>
+                        <div className="pixel-corners">{hands}</div>
                     </div>
                     <div className="discards pixel-corners">
                         <p>Discards</p>
-                        <div className="pixel-corners">4</div>
+                        <div className="pixel-corners">{discards}</div>
                     </div>
                 </div>
                 <div className="dollars gold">
