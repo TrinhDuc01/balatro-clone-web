@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Card = ({ infoCard, choosing, index, position, scale = 1, rotateZ = 0, handleDragStart, handleDrop }) => {
     const [transformStyle, setTransformStyle] = useState('rotateX(0deg) rotateY(0deg)');
-    const [chooseCard, setChooseCard] = useState(false)
+    const [chooseCard, setChooseCard] = useState(false);
+    const [triggerSoundChooseCard, setTriggerSoundChooseCard] = useState();
     const dispatch = useDispatch();
     const handleMouseMove = (e) => {
         const card = e.target.getBoundingClientRect();
@@ -27,24 +28,25 @@ const Card = ({ infoCard, choosing, index, position, scale = 1, rotateZ = 0, han
     const handleChoose = () => {
         let nextChoosingCards = [...choosingCards]; // cập nhật tức thì
         const isSelected = chooseCard;
-    
         if (!isSelected && choosingCards.length < 5) {
+            setTriggerSoundChooseCard(true)//khi card duoc chon thi phat am thanh card1.ogg
             setChooseCard(true);
             nextChoosingCards.push(infoCard);
             dispatch({ type: 'AddCard', payload: infoCard });
         } else if (isSelected) {
+            setTriggerSoundChooseCard(false)//Khi card duoc chon thi phat am thanh card3.ogg
             setChooseCard(false);
             nextChoosingCards = nextChoosingCards.filter(card => card.id !== infoCard.id);
             dispatch({ type: 'RemoveCard', payload: infoCard });
         }
-    
+
         dispatch({
             type: "CheckHand",
             payload: nextChoosingCards
         });
     }
-    
-    
+
+
 
     const styleCard = {
         transform: `  translateX(${rotateZ * 80}px)` + transformStyle + `rotateZ(${rotateZ}deg)`,
@@ -84,6 +86,8 @@ const Card = ({ infoCard, choosing, index, position, scale = 1, rotateZ = 0, han
             <div className="card-back" style={styleBackCard}>
 
             </div>
+            {triggerSoundChooseCard === true && <audio src="./Sounds/card1.ogg" autoPlay></audio>}
+            {triggerSoundChooseCard === false && <audio src="./Sounds/card3.ogg" autoPlay></audio>}
         </div>
 
     </div>
