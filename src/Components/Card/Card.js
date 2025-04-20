@@ -86,8 +86,8 @@ const Card = ({ infoCard, choosing, index, position, scale = 1, rotateZ = 0, han
             <div className="card-back" style={styleBackCard}>
 
             </div>
-            {triggerSoundChooseCard === true && <audio src="./Sounds/card1.ogg" autoPlay></audio>}
-            {triggerSoundChooseCard === false && <audio src="./Sounds/card3.ogg" autoPlay></audio>}
+            {triggerSoundChooseCard === true && <audio preload="auto" src="./Sounds/card1.ogg" autoPlay></audio>}
+            {triggerSoundChooseCard === false && <audio preload="auto" src="./Sounds/card3.ogg" autoPlay></audio>}
         </div>
 
     </div>
