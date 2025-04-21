@@ -186,36 +186,88 @@ const handRankingOption = {
 
 //phân loại hand bài người chơi đánh
 const handRanking = (hand) => {
-    if (hand.length === 0) return nohand
-    const suits = hand.map(card => card.suit) // tách suit thành 1 mảng
-    const names = hand.map(card => card.getRank()).sort((a, b) => a - b) // tách name thành 1 mảng
+    if (hand.length === 0) return { rank: nohand, usedCards: [] };
 
-    const countPlayCard = hand.length; //độ dài hand bài
-    const isFlush = suits.every(suit => suit === suits[0]) && countPlayCard === HandMax; // kiểm tra xem các lá bài trong hand có đồng chất không
-    let isStraight = names.every((value, index, arr) => {
-        return index === 0 || value === arr[index - 1] + 1
-    }) || JSON.stringify(names) === JSON.stringify([0, 1, 2, 3, 12]); // A2345
-    if (countPlayCard < HandMax) {
-        isStraight = false // kiểm tra số lượng
+    const suits = hand.map(card => card.suit);
+    const names = hand.map(card => card.getRank()).sort((a, b) => a - b);
+    const countPlayCard = hand.length;
+
+    const isFlush = suits.every(suit => suit === suits[0]) && countPlayCard === HandMax;
+    let isStraight = names.every((value, index, arr) => index === 0 || value === arr[index - 1] + 1)
+        || JSON.stringify(names) === JSON.stringify([0, 1, 2, 3, 12]); // A2345
+    if (countPlayCard < HandMax) isStraight = false;
+
+    const counts = {};
+    hand.forEach(card => {
+        const name = card.getRank();
+        counts[name] = (counts[name] || []);
+        counts[name].push(card);
+    });
+
+    const countValues = Object.values(counts).map(arr => arr.length).sort((a, b) => b - a).join('');
+
+    // ===== Tìm các lá dùng trong combo =====
+    let usedCards = [];
+
+    if (isFlush && isStraight && Math.max(...names) === 12) {
+        usedCards = [...hand];
+        return { rank: handRankingOption['Royal Flush'], usedCards };
     }
-    const counts = {}; //đếm
-    names.forEach(name => counts[name] = (counts[name] || 0) + 1); // đếm số lá trùng name để ghép thành 1 đôi
-    const countValues = Object.values(counts).sort((a, b) => b - a).join(''); // chuyển thành chuỗi
-    // console.log(isStraight)
-    if (isFlush && isStraight && Math.max(...names) === 12) return handRankingOption['Royal Flush'];
-    if (isFlush && isStraight) return handRankingOption['Straight Flush'];
-    if (countValues.includes('4')) return handRankingOption['Four of a Kind'];
-    if (countValues.includes('32')) return handRankingOption['Full House'];
-    if (isFlush) return handRankingOption['Flush'];
-    if (isStraight) return handRankingOption['Straight'];
-    if (countValues.includes('3')) return handRankingOption['Three of a Kind'];
-    if (countValues.includes('22')) return handRankingOption['Two Pair'];
-    if (countValues.includes('2')) return handRankingOption['Pair'];
-    if (countValues.includes('5')) return handRankingOption['Five of a Kind']
-    return handRankingOption['High Card'];
 
+    if (isFlush && isStraight) {
+        usedCards = [...hand];
+        return { rank: handRankingOption['Straight Flush'], usedCards };
+    }
 
+    if (countValues.includes('4')) {
+        // lấy 4 lá giống nhau
+        usedCards = Object.values(counts).find(arr => arr.length === 4);
+        return { rank: handRankingOption['Four of a Kind'], usedCards };
+    }
+
+    if (countValues.includes('32')) {
+        const three = Object.values(counts).find(arr => arr.length === 3);
+        const pair = Object.values(counts).find(arr => arr.length === 2);
+        usedCards = [...three, ...pair];
+        return { rank: handRankingOption['Full House'], usedCards };
+    }
+
+    if (isFlush) {
+        usedCards = [...hand];
+        return { rank: handRankingOption['Flush'], usedCards };
+    }
+
+    if (isStraight) {
+        usedCards = [...hand];
+        return { rank: handRankingOption['Straight'], usedCards };
+    }
+
+    if (countValues.includes('3')) {
+        usedCards = Object.values(counts).find(arr => arr.length === 3);
+        return { rank: handRankingOption['Three of a Kind'], usedCards };
+    }
+
+    if (countValues.includes('22')) {
+        const pairs = Object.values(counts).filter(arr => arr.length === 2).slice(0, 2);
+        usedCards = [...pairs[0], ...pairs[1]];
+        return { rank: handRankingOption['Two Pair'], usedCards };
+    }
+
+    if (countValues.includes('2')) {
+        usedCards = Object.values(counts).find(arr => arr.length === 2);
+        return { rank: handRankingOption['Pair'], usedCards };
+    }
+
+    if (countValues.includes('5')) {
+        usedCards = Object.values(counts).find(arr => arr.length === 5);
+        return { rank: handRankingOption['Five of a Kind'], usedCards };
+    }
+
+    // Mặc định chọn lá cao nhất
+    usedCards = [hand.reduce((a, b) => a.getRank() > b.getRank() ? a : b)];
+    return { rank: handRankingOption['High Card'], usedCards };
 }
+
 
 export {
     handRankingOption,
