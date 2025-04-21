@@ -1,5 +1,5 @@
 .card {
-    
+
     backface-visibility: hidden;
     position: absolute;
     transition: transform 0.3s cubic-bezier(0, .67, .57, .94);
@@ -29,6 +29,42 @@
 /* Mặt sấp */
 .card-back {
     transform: rotateY(180deg);
+}
+
+.calc-score-card {
+    position: absolute;
+    /* top: -70%; */
+    left: calc(50%);
+    transform: translate(-50%,-120%);
+    padding: 2.5px;
+    background-color: rgb(255, 255, 255);
+    width: 120%;
+    display: none;
+}
+
+.calc-score-card .padding {
+    background-color: #3f4a4d;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.calc-score-card .name-of-card {
+    color: #3f4a4d;
+    padding: 4px 0;
+    background-color: white;
+    text-align: center;
+}
+
+.calc-score-card .value-of-card {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.card:hover .calc-score-card{
+    display: block;
 }
 
 /* .card:hover .card-inner {

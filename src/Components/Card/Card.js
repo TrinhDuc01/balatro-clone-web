@@ -79,8 +79,16 @@ const Card = ({ infoCard, choosing = 0, disableOnClick, index, position, scale =
         onMouseLeave={(e) => setTransformStyle('rotateX(0deg) rotateY(0deg)')}
         onMouseMove={(e) => handleMouseMove(e)}
         style={styleCard} className="card ">
+        <div className="calc-score-card pixel-corners">
+            <div className="padding pixel-corners">
+                <div className="name-of-card pixel-corners">{infoCard.rank} of <span>Clubs</span></div>
+                <div className="value-of-card pixel-corners">
+                    <div className="chip">+{infoCard.points()} chips</div>
+                    <div className="mult"></div> {/* coming soon */}
+                </div>
+            </div>
+        </div>
         <div className="card-inner">
-            {/* <div className="calc-score-card">+1</div> */}
             <div className="card-front" style={styleFaceCard}>
 
             </div>

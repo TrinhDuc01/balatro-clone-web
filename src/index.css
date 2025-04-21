@@ -16,6 +16,30 @@
     user-select: none;
 }
 
+.heart {
+    color: #f11b52;
+}
+
+.diamond {
+    color: #f15a27;
+}
+
+.club {
+    color: #074540;
+}
+
+.spades {
+    color: #292189;
+}
+
+.chip {
+    color: #0093ff;
+}
+
+.mult {
+    color: #ff4c40;
+}
+
 /* làm border-radius dạng pixel Nguồn https://pixelcorners.lukeb.co.uk/?radius=8&multiplier=4 */
 .pixel-corners {
     clip-path: polygon(0px calc(100% - 10px),
@@ -120,7 +144,7 @@
     }
 }
 
-.gold{
+.gold {
     color: #f2b544;
     font-size: 30px;
 }
