@@ -36,7 +36,10 @@ class PlayCard {
         if (this.isNumbered()) {
             return Number(this.rank)
         }
-        return 10
+        if (this.isFace()) {
+            return 10
+        }
+        return 11
     }
 }
 
