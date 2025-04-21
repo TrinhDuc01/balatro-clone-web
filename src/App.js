@@ -8,6 +8,7 @@ import Deck from './Components/Deck/Deck';
 import Combine from './Components/MainGame/Combine/Combine';
 import { useDispatch, useSelector } from 'react-redux';
 import { handRanking } from './Class/HandRankingOption';
+import Test from './Test';
 
 
 function App() {

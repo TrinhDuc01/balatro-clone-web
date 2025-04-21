@@ -2,7 +2,8 @@ import { handRanking, handRankingOption, nohand } from "../../Class/HandRankingO
 
 const defaultState = {
     PokerRankInfo: handRankingOption,
-    PokerHandPlay: nohand
+    PokerHandPlay: nohand,
+    CardScore: []
 }
 
 const PokerHandReducer = (state = defaultState, action) => {
@@ -11,9 +12,9 @@ const PokerHandReducer = (state = defaultState, action) => {
             console.log(action.payload)
             return {
                 ...state,
-                PokerHandPlay: handRanking(action.payload)
+                PokerHandPlay: handRanking(action.payload).rank,//tra ve object {usedCards, rank},
+                CardScore: handRanking(action.payload).usedCards
             }
-
         default:
             return state
     }

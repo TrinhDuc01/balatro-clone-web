@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./card.css"
 import { useDispatch, useSelector } from "react-redux";
 
-const Card = ({ infoCard, choosing, index, position, scale = 1, rotateZ = 0, handleDragStart, handleDrop }) => {
+const Card = ({ infoCard, choosing = 0, disableOnClick, index, position, scale = 1, rotateZ = 0, handleDragStart, handleDrop }) => {
     const [transformStyle, setTransformStyle] = useState('rotateX(0deg) rotateY(0deg)');
     const [chooseCard, setChooseCard] = useState(false);
     const [triggerSoundChooseCard, setTriggerSoundChooseCard] = useState();
@@ -75,11 +75,12 @@ const Card = ({ infoCard, choosing, index, position, scale = 1, rotateZ = 0, han
         onDragStart={() => handleDragStart(index)}
         onDragOver={(e) => e.preventDefault()}
         onDrop={() => handleDrop(index)}
-        onClick={handleChoose}
+        onClick={disableOnClick === true ? () => { } : handleChoose}
         onMouseLeave={(e) => setTransformStyle('rotateX(0deg) rotateY(0deg)')}
         onMouseMove={(e) => handleMouseMove(e)}
         style={styleCard} className="card ">
         <div className="card-inner">
+            {/* <div className="calc-score-card">+1</div> */}
             <div className="card-front" style={styleFaceCard}>
 
             </div>
