@@ -6,6 +6,7 @@ const ButtonFunction = () => {
     const dispatch = useDispatch()
 
     const chipSound = useRef(null);
+    const multHitSound= useRef(null);
     const cardChoose = useSelector(state => state.PlayedCardReducer) //danh sach card chon de danh
     // console.log(cardChoose)
     const { CardScore } = useSelector(state => state.PokerHandReducer)//chi nhung la ghi diem moi duoc tinh
@@ -47,25 +48,31 @@ const ButtonFunction = () => {
         dispatch({ type: "BaseChipMult", payload: PokerHandPlay })
 
         let { chip, mult } = PokerHandPlay
+        const chip_blue = document.querySelector(".chip-blue")
+        console.log(chip_blue)
         // chi lay card tinh diem
         for (let i = 0; i < CardScore.length; i++) {
             await new Promise(resolve => setTimeout(resolve, 300));
-            chip += CardScore[i].points()
+            chip += CardScore[i].points() // tang chip
+            chip_blue.classList.remove('bounce'); // xoa class animation bounce
             chipSound.current.play()
             await new Promise(resolve => setTimeout(resolve, 200));
-            // console.log(CardScore[i].getRank())
             dispatch({
                 type: "PlusChip",
                 payload: CardScore[i].points()
             })
+            chip_blue.classList.add('bounce'); //them clas animation
         }
-        setTimeout(()=>{
+        const score_chip = document.querySelector(".score-chip")
+        setTimeout(() => {
+            score_chip.classList.remove("bounce")
             dispatch({
                 type: "IncreaseRoundScore",
                 payload: chip * mult
             })
             chipSound.current.play()
-        },400)
+            score_chip.classList.add("bounce")
+        }, 400)
 
 
         //Sau khi đánh thi bỏ bài
@@ -81,16 +88,20 @@ const ButtonFunction = () => {
                 num: cardChoose.length,
             })//rút lại bài sau 0.6s
         }, 600)
-        dispatch({
-            type: 'NoCalculate' // Kết thúc tính toán
-        })
-        dispatch({
-            type: 'ResetChipMult', // reset chip mult
-        })
-        dispatch({
-            type: 'CheckHand', // reset hand
-            payload: []
-        })
+        setTimeout(() => {
+            dispatch({
+                type: 'NoCalculate' // Kết thúc tính toán
+            })
+        }, 2000)
+        setTimeout(() => {
+            dispatch({
+                type: 'ResetChipMult', // reset chip mult
+            })
+            dispatch({
+                type: 'CheckHand', // reset hand
+                payload: []
+            })
+        }, 1000)
 
     }
 
@@ -114,6 +125,7 @@ const ButtonFunction = () => {
             </div>
         </div>
         <audio ref={chipSound} src="/Sounds/chips1.ogg" />
+        {/* <audio ref={chipSound} src="/Sounds/multhit2.ogg" /> */}
         <div className={`discard pixel-corners ${cardChoose.length === 0 || discards <= 0 ? 'disabled' : ""}`} onClick={handleDiscard}>
             Discard
         </div>
