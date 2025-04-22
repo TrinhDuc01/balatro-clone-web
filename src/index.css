@@ -148,3 +148,29 @@
     color: #f2b544;
     font-size: 30px;
 }
+
+/* Them animation khi tang diem chip hoac mult */
+@keyframes bounce {
+    0%   { transform: scale(1.6) rotateZ(-15deg); }
+    5.55%  { transform: scale(1.8) rotateZ(-20deg); }
+    11.1%  { transform:scale(1.5) rotateZ(-17deg); }
+    16.65%  { transform:scale(1);}
+    22.2%  { transform: rotateZ(7deg); }
+    27.75%  { transform:scale(1.1) rotateZ(8deg); }
+    33.3%  { transform:scale(1.2) rotateZ(8deg); }
+    38.85%  { transform:scale(1.2) rotateZ(0deg); }
+    44.4%  { transform:scale(1.2) rotateZ(-3deg); }
+    49.95%  { transform:scale(1.1) rotateZ(-5deg); }
+    55.5%  { transform:scale(1.0) rotateZ(-5deg); }
+    61.05%  { transform:scale(1.0) rotateZ(-3deg); }
+    66.6%  { transform:scale(1) rotateZ(0deg); }
+    72.15%  { transform:scale(1.05) rotateZ(2deg); }
+    77.7%  { transform:scale(1.05) rotateZ(3deg); }
+    83.25%  { transform:scale(1.05) rotateZ(2deg); }
+    88.8%  { transform:scale(1.0) rotateZ(0deg); }
+    94.35%  { transform:scale(1) rotateZ(0deg); }
+  }
+
+  .bounce {
+    animation: bounce 0.25s ease;
+  }
