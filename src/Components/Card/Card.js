@@ -81,7 +81,7 @@ const Card = ({ infoCard, choosing = 0, disableOnClick, index, position, scale =
         style={styleCard} className="card ">
         <div className="calc-score-card pixel-corners">
             <div className="padding pixel-corners">
-                <div className="name-of-card pixel-corners">{infoCard.rank} of <span>Clubs</span></div>
+                <div className="name-of-card pixel-corners">{infoCard.rank} of <span className={infoCard.suit}>{infoCard.suit}</span></div>
                 <div className="value-of-card pixel-corners">
                     <div className="chip">+{infoCard.points()} chips</div>
                     <div className="mult"></div> {/* coming soon */}
