@@ -1,6 +1,8 @@
 const defaultState = {
     hands: 4,
-    discards: 4
+    discards: 4,
+    gameOver: false,
+    gameWin: false
 }
 
 const HandsDiscardsReducer = (state = defaultState, action) => {
@@ -14,6 +16,17 @@ const HandsDiscardsReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 discards: state.discards - 1
+            }
+        case "GameOver": {
+            return {
+                ...state,
+                gameOver: true
+            }
+        }
+        case "GameWin":
+            return {
+                ...state,
+                gameWin: action.payload
             }
         case "RestoreHandsDiscards":
             return defaultState

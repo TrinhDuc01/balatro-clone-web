@@ -5,13 +5,15 @@ import HandsDiscardsReducer from "./HandsDiscardsReducer";
 import PokerHandReducer from "./PokerHandReducer";
 import RoundScoreReducer from "./RoundScoreReducer";
 import ChipXMultReducer from "./ChipXMultReducer"
+import ChallangeBlindReducer from "./ChallangeBlindReducer";
 const reducer = combineReducers({
     DrawCardReducer,
     PlayedCardReducer,
     HandsDiscardsReducer,
     PokerHandReducer,
     RoundScoreReducer,
-    ChipXMultReducer
+    ChipXMultReducer,
+    ChallangeBlindReducer
 })
 
 export default reducer;

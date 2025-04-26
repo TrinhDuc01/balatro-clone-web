@@ -7,7 +7,7 @@ const ChipXMult = () => {
     // console.log(PokerHandPlay)
     const { isCalculate } = useSelector(state => state.RoundScoreReducer);
     const { chip, mult } = useSelector(state => state.ChipXMultReducer);
-    console.log(chip, mult)
+    // console.log(chip, mult)
     return <div className="chip-x-mult pixel-corners">
         <div className="calculate-score">
             {PokerHandPlay.nameHand}

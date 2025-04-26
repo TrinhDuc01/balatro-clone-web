@@ -1,8 +1,21 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import "./infoRound.css"
+import { useEffect, useState } from "react"
 
 const InfoRound = () => {
+    const dispatch = useDispatch()
+    const { blindValue } = useSelector(state => state.ChallangeBlindReducer)
+    const { roundScore } = useSelector(state => state.RoundScoreReducer);
+    const cardChoose = useSelector(state => state.PlayedCardReducer) //danh sach card chon de danh
     const { hands, discards } = useSelector(state => state.HandsDiscardsReducer)
+    useEffect(() => {
+        setTimeout(() => {
+            if (hands === 0 && blindValue > roundScore) {
+                dispatch({ type: "GameOver" })
+            }
+        }, cardChoose.length * 1200)
+        if (blindValue <= roundScore) dispatch({ type: "GameWin", payload: true })
+    }, [hands, roundScore])
     return (
         <div className="info-round">
             <div className="run-info-options">

@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux"
 import "./blind.css"
-const blind = ['S', 'm', 'a', 'l', 'l', ' ', 'B', 'l', 'i', 'n', 'd'];
+
 const Blind = () => {
+    const { blindName, blindValue } = useSelector(state => state.ChallangeBlindReducer)
     return <div className="blind pixel-corners">
         <h3 className="blind-name pixel-corners wave-text">
-            {blind && blind.map((value) => {
+            {blindName && blindName.split('').map((value) => {
                 return <span>
                     {value}
                 </span>
@@ -18,7 +20,7 @@ const Blind = () => {
                 <div >
                     <span className="chip-img"></span>
 
-                    <span className="chip-required">300.000.000</span>
+                    <span className="chip-required">{blindValue}</span>
                 </div>
                 <p>Reward: <span className="gold">$$$</span></p>
             </div>

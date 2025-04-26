@@ -6,7 +6,7 @@ const ButtonFunction = () => {
     const dispatch = useDispatch()
 
     const chipSound = useRef(null);
-    const multHitSound= useRef(null);
+    const multHitSound = useRef(null);
     const cardChoose = useSelector(state => state.PlayedCardReducer) //danh sach card chon de danh
     // console.log(cardChoose)
     const { CardScore } = useSelector(state => state.PokerHandReducer)//chi nhung la ghi diem moi duoc tinh
@@ -49,7 +49,7 @@ const ButtonFunction = () => {
 
         let { chip, mult } = PokerHandPlay
         const chip_blue = document.querySelector(".chip-blue")
-        console.log(chip_blue)
+        // console.log(chip_blue)
         // chi lay card tinh diem
         for (let i = 0; i < CardScore.length; i++) {
             await new Promise(resolve => setTimeout(resolve, 300));
@@ -81,13 +81,15 @@ const ButtonFunction = () => {
             type: "DiscardChooseCard"
         })//bỏ bài ở chỗ nhớ
 
-        setTimeout(() => {
+        setTimeout(() => {// chưa thắng stage thì mới cho rút
+            console.log("soluong", cardChoose.length)
             dispatch({
                 type: "Draw",
                 deck: remainingCards,
                 num: cardChoose.length,
             })//rút lại bài sau 0.6s
-        }, 600)
+
+        }, 1000)
         setTimeout(() => {
             dispatch({
                 type: 'NoCalculate' // Kết thúc tính toán

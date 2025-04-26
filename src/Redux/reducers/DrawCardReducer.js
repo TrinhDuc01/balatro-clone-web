@@ -4,15 +4,22 @@ const defaultState = {
     drawCard: []
 }
 
+//rút bài
 const DrawCardReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "InitDeckRoot":
-            console.log('remaining')
             return {
                 DeckAllGame: [...action.payload],
                 remainingCards: [...action.payload],
                 drawCard: []
             }
+        case "NextStage": {
+            return {
+                ...state,
+                remainingCards: state.DeckAllGame,
+                drawCard: []
+            }
+        }
         case "Draw": {
             if (action.deck.length !== 0) {
                 const shuffledDeck = [...action.deck]; // Tạo bản sao mảng để không làm thay đổi mảng gốc

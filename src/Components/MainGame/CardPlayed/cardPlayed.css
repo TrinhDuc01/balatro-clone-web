@@ -1,6 +1,6 @@
 .played-card{
     flex-basis: 40%;
     opacity: 0.3hg;
-    background-color: rgb(179, 179, 179);
+    /* background-color: rgb(179, 179, 179); */
     position: relative;
 }

@@ -9,7 +9,7 @@ const defaultState = {
 const PokerHandReducer = (state = defaultState, action) => {
     switch (action.type) {
         case "CheckHand":
-            console.log(action.payload)
+            // console.log(action.payload)
             return {
                 ...state,
                 PokerHandPlay: handRanking(action.payload).rank,//tra ve object {usedCards, rank},
