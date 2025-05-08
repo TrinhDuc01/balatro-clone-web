@@ -95,8 +95,8 @@ const Card = ({ infoCard, choosing = 0, disableOnClick, index, position, scale =
             <div className="card-back" style={styleBackCard}>
 
             </div>
-            {triggerSoundChooseCard === true && <audio preload="auto" src="./Sounds/card1.ogg" autoPlay></audio>}
-            {triggerSoundChooseCard === false && <audio preload="auto" src="./Sounds/card3.ogg" autoPlay></audio>}
+            {triggerSoundChooseCard === true && <audio preload="auto" src={`${process.env.PUBLIC_URL}/Sounds/card1.ogg`} autoPlay></audio>}
+            {triggerSoundChooseCard === false && <audio preload="auto" src={`${process.env.PUBLIC_URL}/Sounds/card3.ogg`} autoPlay></audio>}
         </div>
 
     </div>
