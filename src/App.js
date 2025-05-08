@@ -49,7 +49,7 @@ function App() {
       <BackgroundHomeCanvas />
       <ButtonToggleMusic />
       {gameOver && <GameOver />}
-      {/* {gameWin && <GameWin />} */}
+      {gameWin && <GameWin />}
     </div>
   );
 }
