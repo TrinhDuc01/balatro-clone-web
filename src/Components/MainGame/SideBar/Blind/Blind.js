@@ -5,8 +5,8 @@ const Blind = () => {
     const { blindName, blindValue } = useSelector(state => state.ChallangeBlindReducer)
     return <div className="blind pixel-corners">
         <h3 className="blind-name pixel-corners wave-text">
-            {blindName && blindName.split('').map((value) => {
-                return <span>
+            {blindName && blindName.split('').map((value,index) => {
+                return <span key={index}>
                     {value}
                 </span>
             })}
