@@ -126,7 +126,7 @@ const ButtonFunction = () => {
                 <div onClick={handleSortSuit} className="suit pixel-corners">Suit</div>
             </div>
         </div>
-        <audio ref={chipSound} src="/Sounds/chips1.ogg" />
+        <audio ref={chipSound} src="./Sounds/chips1.ogg" />
         {/* <audio ref={chipSound} src="/Sounds/multhit2.ogg" /> */}
         <div className={`discard pixel-corners ${cardChoose.length === 0 || discards <= 0 ? 'disabled' : ""}`} onClick={handleDiscard}>
             Discard
