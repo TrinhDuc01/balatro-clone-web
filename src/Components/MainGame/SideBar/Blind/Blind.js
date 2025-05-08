@@ -13,7 +13,7 @@ const Blind = () => {
         </h3>
         <div className="info-blind pixel-corners">
             <div className="icon">
-                <img src="./assets/blind/Small_Blind.webp" width={80} height={80} alt="blind" />
+                <img src={`${process.env.PUBLIC_URL}/assets/blind/Small_Blind.webp`} width={80} height={80} alt="blind" />
             </div>
             <div className="at-least pixel-corners">
                 <p>Score at least</p>

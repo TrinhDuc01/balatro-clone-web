@@ -59,14 +59,14 @@ const Card = ({ infoCard, choosing = 0, disableOnClick, index, position, scale =
     }
 
     const styleFaceCard = {
-        backgroundImage: `url('/assets/basic-card.png')`,
+        backgroundImage: `url('${process.env.PUBLIC_URL}/assets/basic-card.png')`, // them ten repo de anh k loi khi co homepage o package.json
         backgroundSize: 1846 * scale,
         backgroundPosition: `${position.width * scale}px ${position.height * scale}px`,
         backgroundRepeat: 'no-repeat',
         backgroundColor: 'white',
     }
     const styleBackCard = {
-        backgroundImage: `url('/assets/deck/Balatro-red_deck.webp')`,
+        backgroundImage: `url('${process.env.PUBLIC_URL}/assets/deck/Balatro-red_deck.webp')`, // them ten repo de anh k loi
         backgroundSize: 140 * scale,
         backgroundRepeat: 'no-repeat',
     }
