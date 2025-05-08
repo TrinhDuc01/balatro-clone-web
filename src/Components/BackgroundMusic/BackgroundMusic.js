@@ -7,7 +7,7 @@ const BackgroundMusic = () => {
     })
 
     return <div>
-        <audio preload="auto" id="background-audio" src={`${process.env.PUBLIC_URL}/Sounds/01. Main Theme.mp3`} volume autoPlay loop></audio>
+        <audio preload="auto" id="background-audio" src={`${process.env.PUBLIC_URL}/Sounds/01. Main Theme.mp3`} autoPlay loop></audio>
     </div>
 }
 
