@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/balatro-clone-web/static/css/main.2c655422.css",
-    "main.js": "/balatro-clone-web/static/js/main.eb386306.js",
+    "main.js": "/balatro-clone-web/static/js/main.7fcee8f6.js",
     "static/js/453.c8db6e01.chunk.js": "/balatro-clone-web/static/js/453.c8db6e01.chunk.js",
     "static/media/chip.png": "/balatro-clone-web/static/media/chip.bea9ce16c10fcc4674c1.png",
     "static/media/m6x11plus.ttf": "/balatro-clone-web/static/media/m6x11plus.4ca71169cc9e3ea5d4eb.ttf",
     "static/media/Balatro-red_deck.webp": "/balatro-clone-web/static/media/Balatro-red_deck.7c54f9bd75ef908e87f5.webp",
     "index.html": "/balatro-clone-web/index.html",
     "main.2c655422.css.map": "/balatro-clone-web/static/css/main.2c655422.css.map",
-    "main.eb386306.js.map": "/balatro-clone-web/static/js/main.eb386306.js.map",
+    "main.7fcee8f6.js.map": "/balatro-clone-web/static/js/main.7fcee8f6.js.map",
     "453.c8db6e01.chunk.js.map": "/balatro-clone-web/static/js/453.c8db6e01.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2c655422.css",
-    "static/js/main.eb386306.js"
+    "static/js/main.7fcee8f6.js"
   ]
 }
